@@ -1,10 +1,13 @@
+const axe = require('axe-core/axe.js');
+
 import {
   it,
   inject,
   injectAsync,
   describe,
   beforeEachProviders,
-  TestComponentBuilder
+  TestComponentBuilder,
+  ComponentFixture
 } from 'angular2/testing';
 
 import {Component, provide} from 'angular2/core';
@@ -51,4 +54,14 @@ describe('Home', () => {
     expect(console.log).toHaveBeenCalled();
   }));
 
+  it('should have a form label', injectAsync([ TestComponentBuilder ], (tcb: TestComponentBuilder) => {
+    return tcb.createAsync(Home).then((componentFixture: ComponentFixture) => {
+      const element = componentFixture.nativeElement;
+
+      axe.a11yCheck(element, null, (result) => {
+        console.log(result);
+        expect(result.violations.length).toBe(0);
+      });
+    });
+  }));
 });
