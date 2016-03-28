@@ -1,7 +1,9 @@
 <div>
-  <span x-large>Your Content Here</span>
   <form (ngSubmit)="submitState(localState.value)">
-    <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
+    <label>
+      <span x-large>Your Content Here</span>
+      <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
+    </label>
     <button>Submit Value</button>
   </form>
   <!--

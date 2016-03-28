@@ -1,4 +1,5 @@
-const axe = require('axe-core/axe.js');
+require('axe-core/axe.js');
+declare var axe: any;
 
 import {
   it,
